@@ -18,17 +18,17 @@ export class LeftSidebarComponent {
       label: 'Dashboard',
     },
     {
-      routeLink: 'timesheets',
+      routeLink: 'timesheet',
       icon: 'bi bi-calendar-week',
       label: 'Timesheets',
     },
     {
-      routeLink: 'users',
+      routeLink: 'user',
       icon: 'bi bi-people',
       label: 'Users',
     },
     {
-      routeLink: 'reports',
+      routeLink: 'timesheet/report',
       icon: 'bi-clipboard-data',
       label: 'Reports',
     },
