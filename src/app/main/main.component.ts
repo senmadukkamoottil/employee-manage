@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, input } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, computed, Input, input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -11,6 +10,7 @@ import { RouterOutlet } from '@angular/router';
 export class MainComponent {
   isLeftSidebarCollapsed = input.required<boolean>();
   screenWidth = input.required<number>();
+  route = '';
   sizeClass = computed(() => {
     const isLeftSidebarCollapsed = this.isLeftSidebarCollapsed();
     if (isLeftSidebarCollapsed) {
@@ -18,4 +18,9 @@ export class MainComponent {
     }
     return this.screenWidth() > 768 ? 'body-trimmed' : 'body-md-screen';
   });
+
+  constructor() {
+
+  }
+
 }

@@ -1,4 +1,6 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,15 @@ export class AppComponent {
   title = 'employee-manage';
   isLeftSidebarCollapsed = signal<boolean>(false);
   screenWidth = signal<number>(window.innerWidth);
+  currentRoute = '';
+
+  constructor(private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.currentRoute = event.url;
+    });
+  }
 
   @HostListener('window:resize')
   onResize() {
@@ -17,10 +28,6 @@ export class AppComponent {
     if (this.screenWidth() < 768) {
       this.isLeftSidebarCollapsed.set(true);
     }
-  }
-
-  ngOnInit(): void {
-    this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
   }
 
   changeIsLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean): void {

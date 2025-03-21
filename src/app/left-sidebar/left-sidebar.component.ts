@@ -25,7 +25,12 @@ export class LeftSidebarComponent {
     {
       routeLink: 'user',
       icon: 'bi bi-people',
-      label: 'Users',
+      label: 'Add user',
+    },
+    {
+      routeLink: 'list-user',
+      icon: 'bi bi-people',
+      label: 'View users',
     },
     {
       routeLink: 'timesheet/report',
